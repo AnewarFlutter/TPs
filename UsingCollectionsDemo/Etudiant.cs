@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace UsageCollections
 {
-   public class Étudiant
+   public class Etudiant
     {
         public string Nom { get; set; }
         public double NoteCC { get; set; }
