@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 
 namespace UsageCollections
@@ -45,11 +45,8 @@ namespace UsageCollections
             Console.Write("Entrez le nom de l'étudiant : ");
             string nom = Console.ReadLine();
 
-            Console.Write("Entrez la note de Contrôle Continu : ");
-            double noteCC = double.Parse(Console.ReadLine());
-
-            Console.Write("Entrez la note de Devoir : ");
-            double noteDevoir = double.Parse(Console.ReadLine());
+            double noteCC = ObtenirNote("Contrôle Continu");
+            double noteDevoir = ObtenirNote("Devoir");
 
             Etudiant etudiant = new Etudiant
             {
@@ -60,6 +57,23 @@ namespace UsageCollections
 
             liste.Add(nom, etudiant);
             Console.WriteLine("Étudiant ajouté avec succès !");
+        }
+
+        static double ObtenirNote(string typeNote)
+        {
+            double note;
+            while (true)
+            {
+                Console.Write($"Entrez la note de {typeNote} (0-20) : ");
+                if (double.TryParse(Console.ReadLine(), out note) && note >= 0 && note <= 20)
+                {
+                    return note;
+                }
+                else
+                {
+                    Console.WriteLine("Note invalide. Elle doit être comprise entre 0 et 20. Essayez à nouveau.");
+                }
+            }
         }
 
         static void AfficherUnÉtudiant(SortedList liste)
