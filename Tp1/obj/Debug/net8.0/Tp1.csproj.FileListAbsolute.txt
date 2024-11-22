@@ -1,0 +1,14 @@
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\bin\Debug\net8.0\Tp1.exe
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\bin\Debug\net8.0\Tp1.deps.json
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\bin\Debug\net8.0\Tp1.runtimeconfig.json
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\bin\Debug\net8.0\Tp1.dll
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\bin\Debug\net8.0\Tp1.pdb
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\obj\Debug\net8.0\Tp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\obj\Debug\net8.0\Tp1.AssemblyInfoInputs.cache
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\obj\Debug\net8.0\Tp1.AssemblyInfo.cs
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\obj\Debug\net8.0\Tp1.csproj.CoreCompileInputs.cache
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\obj\Debug\net8.0\Tp1.dll
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\obj\Debug\net8.0\refint\Tp1.dll
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\obj\Debug\net8.0\Tp1.pdb
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\obj\Debug\net8.0\Tp1.genruntimeconfig.cache
+C:\Users\damal\Desktop\.Net\Tp1\Tp1\obj\Debug\net8.0\ref\Tp1.dll
