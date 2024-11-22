@@ -1,0 +1,14 @@
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\bin\Debug\net8.0\Tp3.exe
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\bin\Debug\net8.0\Tp3.deps.json
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\bin\Debug\net8.0\Tp3.runtimeconfig.json
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\bin\Debug\net8.0\Tp3.dll
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\bin\Debug\net8.0\Tp3.pdb
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\obj\Debug\net8.0\Tp3.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\obj\Debug\net8.0\Tp3.AssemblyInfoInputs.cache
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\obj\Debug\net8.0\Tp3.AssemblyInfo.cs
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\obj\Debug\net8.0\Tp3.csproj.CoreCompileInputs.cache
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\obj\Debug\net8.0\Tp3.dll
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\obj\Debug\net8.0\refint\Tp3.dll
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\obj\Debug\net8.0\Tp3.pdb
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\obj\Debug\net8.0\Tp3.genruntimeconfig.cache
+C:\Users\damal\Desktop\.Net\Tp3\Tp3\obj\Debug\net8.0\ref\Tp3.dll
