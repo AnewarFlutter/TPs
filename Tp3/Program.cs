@@ -2,79 +2,121 @@
 
 namespace Tp3
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            // Demander les bornes
-            int borneInf, borneSup;
-            Console.WriteLine("Veuillez saisir la borne inférieure :");
-            borneInf = int.Parse(Console.ReadLine());
-            Console.WriteLine("Veuillez saisir la borne supérieure :");
-            borneSup = int.Parse(Console.ReadLine());
+            Console.WriteLine("Bienvenue dans le jeu 'Devine le nombre' !");
+            bool continuerJeu = true;
 
-            // Vérifier que la borne inférieure est inférieure à la borne supérieure
-            if (borneInf >= borneSup)
+            while (continuerJeu)
             {
-                Console.WriteLine("La borne inférieure doit être inférieure à la borne supérieure. Veuillez réessayer.");
-                return;
+                // Étape 3 : Personnalisation des bornes
+                Console.WriteLine("\nDéfinissez les bornes pour l'intervalle.");
+                int minIntervalle = LireBorne("Entrez la borne minimale : ");
+                int maxIntervalle = LireBorne("Entrez la borne maximale : ", minIntervalle);
+
+                // Génération du nombre aléatoire à trouver
+                Random generateurAleatoire = new Random();
+                int nombreCible = generateurAleatoire.Next(minIntervalle, maxIntervalle + 1);
+
+                List<int> tentativesJoueur = new List<int>();
+                int nombreTentatives = 0;
+                bool aGagne = false;
+
+                Console.WriteLine($"\nDevinez le nombre caché entre {minIntervalle} et {maxIntervalle} !");
+
+                // Étape 2 : Gestion des exceptions et boucle
+                while (!aGagne)
+                {
+                    try
+                    {
+                        Console.Write("\nFaites votre choix : ");
+                        int choixUtilisateur = LireNombre(minIntervalle, maxIntervalle);
+
+                        nombreTentatives++;
+                        tentativesJoueur.Add(choixUtilisateur);
+
+                        if (choixUtilisateur == nombreCible)
+                        {
+                            aGagne = true;
+                            Console.WriteLine("\nBravo, vous avez trouvé le nombre caché !");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Mauvaise réponse, tentez à nouveau !");
+                        }
+
+                        Console.WriteLine($"Vos tentatives précédentes : {string.Join(", ", tentativesJoueur)}");
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"{e.Message}");
+                    }
+                }
+
+                // Calcul de la note
+                double scoreFinal = Math.Round((double)(maxIntervalle - minIntervalle + 1) / nombreTentatives, 2);
+                Console.WriteLine($"\nVotre score est : {scoreFinal}");
+
+                // Rejouer ?
+                string reponseUtilisateur;
+                do
+                {
+                    Console.Write("\nSouhaitez-vous rejouer ? (oui/non) : ");
+                    reponseUtilisateur = Console.ReadLine().Trim().ToLower();
+
+                    // Vérification des réponses valides
+                    if (string.IsNullOrEmpty(reponseUtilisateur) || (reponseUtilisateur != "oui" && reponseUtilisateur != "o" && reponseUtilisateur != "non" && reponseUtilisateur != "n"))
+                    {
+                        Console.WriteLine("Réponse invalide. Veuillez réessayer.");
+                    }
+                }
+                while (string.IsNullOrEmpty(reponseUtilisateur) || (reponseUtilisateur != "oui" && reponseUtilisateur != "o" && reponseUtilisateur != "non" && reponseUtilisateur != "n"));
+
+                // Décision de rejouer ou non
+                continuerJeu = reponseUtilisateur == "oui" || reponseUtilisateur == "o";
             }
 
-            // Générer un nombre aléatoire entre borneInf et borneSup
-            Random random = new Random();
-            int nombreADeviner = random.Next(borneInf, borneSup + 1);
+            Console.WriteLine("Merci d'avoir joué ! À bientôt !");
+        }
 
-            // Tableau pour stocker les choix déjà faits
-            int[] choixFaits = new int[10];
-            int index = 0;
-            int tentatives = 0;
+        /// <summary>
+        /// Lecture sécurisée d'un nombre entier dans une plage donnée.
+        /// </summary>
+        static int LireNombre(int min, int max)
+        {
+            if (!int.TryParse(Console.ReadLine(), out int nombre) || nombre < min || nombre > max)
+            {
+                throw new ArgumentException($"Veuillez saisir un nombre entre [{min}, {max}].");
+            }
 
+            return nombre;
+        }
+
+        /// <summary>
+        /// Lecture sécurisée d'une borne pour définir l'intervalle.
+        /// </summary>
+        static int LireBorne(string message, int min = int.MinValue)
+        {
             while (true)
             {
+                Console.Write(message);
                 try
                 {
-                    // Demander à l'utilisateur de choisir un nombre dans l'intervalle
-                    Console.WriteLine($"Choisissez un nombre entre {borneInf} et {borneSup} :");
-                    int nombre = int.Parse(Console.ReadLine());
-                    tentatives++;
-
-                    // Vérifier si le nombre est dans la plage correcte
-                    if (nombre < borneInf || nombre > borneSup)
+                    int borne = int.Parse(Console.ReadLine());
+                    if (borne <= min)
                     {
-                        // Lever une exception si le nombre n'est pas compris entre borneInf et borneSup
-                        throw new Exception($"Saisissez un nombre compris entre {borneInf} et {borneSup}.");
-                    }
-
-                    // Afficher le choix fait et le stocker dans le tableau
-                    Console.WriteLine($"Vous avez choisi : {nombre}");
-                    choixFaits[index++] = nombre;
-
-                    // Afficher les choix précédents
-                    Console.WriteLine("Choix déjà faits :");
-                    for (int i = 0; i < index; i++)
-                    {
-                        Console.Write(choixFaits[i] + " ");
-                    }
-                    Console.WriteLine();
-
-                    // Vérifier si l'utilisateur a trouvé le bon nombre
-                    if (nombre == nombreADeviner)
-                    {
-                        Console.WriteLine("Félicitations, vous avez trouvé le bon nombre !");
-                        // Calculer la note
-                        double note = (double)(borneSup - borneInf + 1) / tentatives;
-                        Console.WriteLine($"Votre note est : {note:F2}");  // Affiche la note avec 2 décimales
-                        break;  // Quitte la boucle si le joueur a gagné
+                        Console.WriteLine($"Veuillez entrer une valeur supérieure à {min}.");
                     }
                     else
                     {
-                        Console.WriteLine("Ce n'est pas le bon nombre, essayez encore.");
+                        return borne;
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
-                    // Afficher le message d'erreur si une exception est levée
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("Veuillez saisir un nombre entier valide.");
                 }
             }
         }
